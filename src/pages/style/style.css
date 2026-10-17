@@ -1,0 +1,1098 @@
+/* ==========================================================================
+   Navbar & Button Styles
+   ========================================================================== */
+
+/* Navbar Container & Header */
+.navbar-header {
+  width: 100%;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.65rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Brand Logo */
+.navbar-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.navbar-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+.navbar-logo-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #171717;
+  letter-spacing: -0.02em;
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navbar-link {
+  font-size: 18px;
+  font-weight: 500;
+  color: #464646;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.navbar-link:hover {
+  color: #171717;
+}
+
+/* Desktop Action */
+.navbar-action {
+  display: flex;
+  align-items: center;
+}
+
+/* Animated Burger Toggle */
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  width: 42px;
+  height: 42px;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: 8px;
+  z-index: 1001;
+  transition: background-color 0.2s ease;
+}
+
+.burger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #171717;
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.navbar-toggle.open .burger-line.line-1 {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggle.open .burger-line.line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navbar-toggle.open .burger-line.line-3 {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Mobile & Portrait Tablet Popout Panel (Zoom-in with Screen Gap)
+   ========================================================================== */
+
+.mobile-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.mobile-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-popout-panel {
+  display: none;
+  position: fixed;
+  inset: 16px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  z-index: 2000;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  padding: 1.5rem 1.6rem;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.85);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease,
+              visibility 0.35s ease;
+}
+
+.mobile-popout-panel.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.mobile-popout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mobile-popout-links {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  gap: 0.35rem;
+}
+
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 0.5rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.mobile-nav-item:last-child {
+  border-bottom: none;
+}
+
+.nav-item-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #171717;
+  letter-spacing: -0.01em;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-tilt-arrow {
+  font-size: 22px;
+  color: #171717;
+  transition: transform 0.25s ease-in-out;
+}
+
+.mobile-nav-item:hover .nav-item-text,
+.mobile-nav-item:active .nav-item-text {
+  color: #000000;
+  transform: translateX(4px);
+}
+
+.mobile-nav-item:hover .nav-tilt-arrow,
+.mobile-nav-item:active .nav-tilt-arrow {
+  transform: translate(3px, -3px);
+}
+
+.mobile-popout-footer {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-popout-footer .btn-wrapper {
+  width: 100%;
+}
+
+.mobile-popout-footer .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Button with Lines & Dots Hover Animation (from button.txt)
+   ========================================================================== */
+
+.btn-wrapper {
+  --dot-size: 6px;
+  --line-weight: 1px;
+  --line-distance: 0.75rem 0.95rem;
+  --animation-speed: 0.35s;
+  --dot-color: #666666;
+  --line-color: #999999;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  padding: var(--line-distance);
+  background-color: #0000;
+  transition: background-color 0.3s ease-in-out;
+  user-select: none;
+}
+
+.btn-wrapper:hover,
+.btn-wrapper:has(.btn:hover) {
+  animation: backround-color-change calc(var(--animation-speed) * 4) ease-in-out forwards;
+}
+
+@keyframes backround-color-change {
+  80% {
+    background-color: #0000;
+  }
+  100% {
+    background-color: #0000;
+  }
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.72rem 1.45rem;
+  background-color: #171717;
+  border: none;
+
+  color: #ffffff;
+  font-family: var(--primary-font, 'Inter', sans-serif);
+  font-size: 14.3px;
+  font-weight: 500;
+  text-decoration: none;
+
+  border-radius: 9999px;
+  cursor: pointer;
+
+  /* box-shadow:
+    0 0 0px 1px #0003,
+    0px 1px 1px rgba(3, 7, 18, 0.02),
+    0px 5px 4px rgba(3, 7, 18, 0.04),
+    0px 12px 9px rgba(3, 7, 18, 0.06),
+    0px 20px 15px rgba(3, 7, 18, 0.08),
+    0px 32px 24px rgba(3, 7, 18, 0.1); */
+
+  transition:
+    background-color 0.2s ease-in-out,
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    border-radius 0.3s ease-in-out,
+    border-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #000000;
+  transform: scale(1.04);
+  border-radius: 9999px;
+  /* box-shadow:
+    0 0 0px 1px #0005,
+    0px 4px 14px rgba(0, 0, 0, 0.22); */
+}
+
+.btn:active {
+  background-color: #171717;
+  transform: scale(0.98);
+  border-radius: 9999px;
+}
+
+.btn-icon {
+  margin-left: 0.45rem;
+  font-size: 17px;
+  line-height: 1;
+  transition: transform 0.25s ease-in-out;
+}
+
+.btn:hover .btn-icon {
+  transform: translate(2px, -2px);
+}
+
+/* Dots */
+.dot {
+  position: absolute;
+  width: var(--dot-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--dot-color);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-wrapper:hover .dot.top.left,
+.btn-wrapper:has(.btn:hover) .dot.top.left {
+  top: 50%;
+  left: 20%;
+  animation: move-top-left var(--animation-speed) ease-in-out forwards;
+}
+
+@keyframes move-top-left {
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    top: calc(var(--dot-size) * -0.5);
+    left: calc(var(--dot-size) * -0.5);
+    opacity: 1;
+  }
+}
+
+.btn-wrapper:hover .dot.top.right,
+.btn-wrapper:has(.btn:hover) .dot.top.right {
+  top: 50%;
+  right: 20%;
+  animation: move-top-right var(--animation-speed) ease-in-out forwards;
+  animation-delay: calc(var(--animation-speed) * 0.6);
+}
+
+@keyframes move-top-right {
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    top: calc(var(--dot-size) * -0.5);
+    right: calc(var(--dot-size) * -0.5);
+    opacity: 1;
+  }
+}
+
+.btn-wrapper:hover .dot.bottom.right,
+.btn-wrapper:has(.btn:hover) .dot.bottom.right {
+  bottom: 50%;
+  right: 20%;
+  animation: move-bottom-right var(--animation-speed) ease-in-out forwards;
+  animation-delay: calc(var(--animation-speed) * 1.2);
+}
+
+@keyframes move-bottom-right {
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    bottom: calc(var(--dot-size) * -0.5);
+    right: calc(var(--dot-size) * -0.5);
+    opacity: 1;
+  }
+}
+
+.btn-wrapper:hover .dot.bottom.left,
+.btn-wrapper:has(.btn:hover) .dot.bottom.left {
+  bottom: 50%;
+  left: 20%;
+  animation: move-bottom-left var(--animation-speed) ease-in-out forwards;
+  animation-delay: calc(var(--animation-speed) * 1.8);
+}
+
+@keyframes move-bottom-left {
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    bottom: calc(var(--dot-size) * -0.5);
+    left: calc(var(--dot-size) * -0.5);
+    opacity: 1;
+  }
+}
+
+/* Lines */
+.line {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.line.horizontal {
+  height: var(--line-weight);
+  width: 100%;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #0000 0 calc(var(--line-weight) * 2),
+    var(--line-color) calc(var(--line-weight) * 2) calc(var(--line-weight) * 4)
+  );
+}
+
+.line.top {
+  top: calc(var(--line-weight) * -0.5);
+  transform-origin: top left;
+  transform: rotate(5deg) scaleX(0);
+}
+
+.line.bottom {
+  bottom: calc(var(--line-weight) * -0.5);
+  transform-origin: bottom right;
+  transform: rotate(5deg) scaleX(0);
+}
+
+.line.vertical {
+  width: var(--line-weight);
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    0deg,
+    #0000 0 calc(var(--line-weight) * 2),
+    var(--line-color) calc(var(--line-weight) * 2) calc(var(--line-weight) * 4)
+  );
+}
+
+.line.left {
+  left: calc(var(--line-weight) * -0.5);
+  transform-origin: bottom left;
+  transform: rotate(0deg) scaleY(0);
+}
+
+.line.right {
+  right: calc(var(--line-weight) * -0.5);
+  transform-origin: top right;
+  transform: rotate(5deg) scaleY(0);
+}
+
+.btn-wrapper:hover .line.top,
+.btn-wrapper:has(.btn:hover) .line.top {
+  animation: draw-top var(--animation-speed) ease-in-out forwards;
+  animation-delay: calc(var(--animation-speed) * 0.8);
+}
+
+@keyframes draw-top {
+  100% {
+    transform: rotate(0deg) scaleX(1);
+  }
+}
+
+.btn-wrapper:hover .line.bottom,
+.btn-wrapper:has(.btn:hover) .line.bottom {
+  animation: draw-bottom var(--animation-speed) ease-in-out forwards;
+  animation-delay: calc(var(--animation-speed) * 2);
+}
+
+@keyframes draw-bottom {
+  100% {
+    transform: rotate(0deg) scaleX(1);
+  }
+}
+
+.btn-wrapper:hover .line.left,
+.btn-wrapper:has(.btn:hover) .line.left {
+  animation: draw-left var(--animation-speed) ease-in-out forwards;
+  animation-delay: calc(var(--animation-speed) * 2.4);
+}
+
+@keyframes draw-left {
+  100% {
+    transform: rotate(0deg) scaleY(1);
+  }
+}
+
+.btn-wrapper:hover .line.right,
+.btn-wrapper:has(.btn:hover) .line.right {
+  animation: draw-right var(--animation-speed) ease-in-out forwards;
+  animation-delay: calc(var(--animation-speed) * 1.4);
+}
+
+@keyframes draw-right {
+  100% {
+    transform: rotate(0deg) scaleY(1);
+  }
+}
+
+/* ==========================================================================
+   Hero Section & Animated Rolling/Blinking Bot Icon
+   ========================================================================== */
+
+.hero-section {
+  width: 100%;
+  padding: 4.8rem 1.5rem 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+.hero-container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Top Announcement Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f5f5f5;
+  border: 1px solid #e7e7e7;
+  border-radius: 9999px;
+  padding: 6px 14px;
+  margin-bottom: 2rem;
+  user-select: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.badge-text {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #374151;
+  letter-spacing: -0.01em;
+}
+
+/* Hero Title Headline */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 4.7rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #171717;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title-desktop {
+  display: flex;
+}
+
+.hero-title-mobile {
+  display: none;
+}
+
+.hero-title-line {
+  display: block;
+}
+
+.hero-title-line-bot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 0.45rem;
+}
+
+/* Bot Rolling-in from Left and Floater Idle Loop */
+.hero-bot-roller {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  vertical-align: middle;
+  margin: 0 0.35rem;
+  animation: botRollIn 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.hero-bot-floater {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: botFloatingLoop 3.6s ease-in-out 1.4s infinite;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.hero-bot-floater:hover {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.hero-bot-svg {
+  width: 66px;
+  height: 59px;
+  display: block;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+  transition: filter 0.3s ease;
+}
+
+.hero-bot-floater:hover .hero-bot-svg {
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.18));
+}
+
+/* Keyframes: Roll in from left side when page renders */
+@keyframes botRollIn {
+  0% {
+    transform: translateX(-100vw) rotate(-720deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  82% {
+    transform: translateX(14px) rotate(16deg);
+  }
+  92% {
+    transform: translateX(-5px) rotate(-6deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Keyframes: Gentle Floating / Idle Loop */
+@keyframes botFloatingLoop {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-2.5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(4px) rotate(2deg);
+  }
+}
+
+/* Eye Blinking Animation */
+.bot-eyelid {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scaleY(0);
+}
+
+.bot-eyelid-left,
+.bot-eyelid-right {
+  animation: botEyeBlink 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 1.4s;
+}
+
+@keyframes botEyeBlink {
+  0% {
+    transform: scaleY(0);
+  }
+  /* Immediate cute double-blink when arriving at place */
+  2% {
+    transform: scaleY(1);
+  }
+  5% {
+    transform: scaleY(0);
+  }
+  8% {
+    transform: scaleY(1);
+  }
+  11% {
+    transform: scaleY(0);
+  }
+  /* Stays open until idle cycle blink */
+  62% {
+    transform: scaleY(0);
+  }
+  65% {
+    transform: scaleY(1);
+  }
+  68% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+/* Hero Description */
+.hero-description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #777B83;
+  max-width: 630px;
+  margin: 0 auto 2.25rem;
+  font-weight: 400;
+}
+
+/* Hero CTA Buttons */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  background-color: #171717;
+  color: #ffffff;
+  border-radius: 9999px;
+  font-size: 18px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.hero-btn-primary:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+}
+
+.hero-btn-primary .hero-btn-icon {
+  font-size: 1.05rem;
+  transition: transform 0.2s ease;
+}
+
+.hero-btn-primary:hover .hero-btn-icon {
+  transform: translateX(3px);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.6rem;
+  background-color: #f3f4f6;
+  color: #171717;
+  border-radius: 9999px;
+  font-size: 18px;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.hero-btn-secondary:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+/* Social Proof */
+.hero-social-proof {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.proof-avatars {
+  display: inline-flex;
+  align-items: center;
+}
+
+.proof-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 10.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+  margin-left: -6px;
+}
+
+.proof-avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar-s {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.avatar-c {
+  background-color: #ffedd5;
+  color: #9a3412;
+}
+
+.avatar-n {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.avatar-a {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+}
+
+.proof-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #738099;
+}
+
+/* ==========================================================================
+   Bot Floating Word Bubbles & Connecting Wires
+   ========================================================================== */
+
+.bot-bubbles-cluster {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.bot-bubble {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+/* Four Placements around the bot */
+.bubble-top-left {
+  bottom: 60%;
+  right: 70%;
+  transform-origin: bottom right;
+}
+
+.bubble-top-right {
+  bottom: 60%;
+  left: 70%;
+  transform-origin: bottom left;
+}
+
+.bubble-bottom-right {
+  top: 60%;
+  left: 70%;
+  transform-origin: top left;
+}
+
+.bubble-bottom-left {
+  top: 60%;
+  right: 70%;
+  transform-origin: top right;
+}
+
+/* Wire Connectors */
+.bubble-wire {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Bubble Pills */
+.bubble-pill {
+  font-family: var(--primary-font, 'Inter', sans-serif);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bubble-pill:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Colors matching S, C, N, A */
+.pill-automation {
+  background-color: #dbeafe;
+  color: #1e40af;
+  border: 1.5px solid #bfdbfe;
+}
+
+.pill-execute {
+  background-color: #ffedd5;
+  color: #9a3412;
+  border: 1.5px solid #fed7aa;
+}
+
+.pill-resolve {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1.5px solid #bbf7d0;
+}
+
+.pill-schedule {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+  border: 1.5px solid #e9d5ff;
+}
+
+/* ==========================================================================
+   Intro One-Time Sequential Animations
+   Flow: 1. Left (Top-Left) -> 2. Right (Top-Right) -> 3. Right Bottom -> 4. Left Bottom -> Close All
+   ========================================================================== */
+
+.hero-bot-roller.intro-playing .bubble-top-left {
+  animation: introBubbleTL 3.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 1.6s;
+}
+
+.hero-bot-roller.intro-playing .bubble-top-right {
+  animation: introBubbleTR 3.0s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 2.1s;
+}
+
+.hero-bot-roller.intro-playing .bubble-bottom-right {
+  animation: introBubbleBR 2.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 2.6s;
+}
+
+.hero-bot-roller.intro-playing .bubble-bottom-left {
+  animation: introBubbleBL 2.0s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 3.1s;
+}
+
+/* 1. Left (Top-Left): Automation */
+@keyframes introBubbleTL {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  16% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  88% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* 2. Right (Top-Right): Execute */
+@keyframes introBubbleTR {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  86% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* 3. Right Bottom: Resolve */
+@keyframes introBubbleBR {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  14% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  22% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  84% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* 4. Left Bottom: Schedule */
+@keyframes introBubbleBL {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  26% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* ==========================================================================
+   Client Hover Effect (After Intro Done): Popout All 4 Bubbles Together
+   ========================================================================== */
+
+.hero-bot-roller.intro-done .bot-bubble {
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.hero-bot-roller.intro-done:hover .bot-bubble {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.hero-bot-roller.intro-done:hover .bubble-top-left {
+  transition-delay: 0s;
+}
+
+.hero-bot-roller.intro-done:hover .bubble-top-right {
+  transition-delay: 0.04s;
+}
+
+.hero-bot-roller.intro-done:hover .bubble-bottom-right {
+  transition-delay: 0.08s;
+}
+
+.hero-bot-roller.intro-done:hover .bubble-bottom-left {
+  transition-delay: 0.12s;
+}
+

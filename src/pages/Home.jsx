@@ -1,0 +1,220 @@
+import { useState, useEffect } from 'react'
+import { FiArrowRight } from 'react-icons/fi'
+import './style/style.css'
+
+// Reusable Animated Bot Mascot with Wires and Connected Word Bubbles
+const BotMascot = ({ introPhase }) => (
+  <span
+    className={`hero-bot-roller ${introPhase}`}
+    aria-label="Easy Bot Mascot"
+  >
+    <span className="hero-bot-floater">
+      <svg
+        className="hero-bot-svg"
+        width="82"
+        height="73"
+        viewBox="0 0 82 73"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* White eye background circles */}
+        <ellipse cx="27.99" cy="36.4" rx="6" ry="6.6" fill="#ffffff" />
+        <ellipse cx="54.05" cy="36.4" rx="6" ry="6.6" fill="#ffffff" />
+
+        {/* Main Bot Head Path from svg.txt */}
+        <path
+          d="M82 37.8478C82 40.0009 82 42.154 82 44.3081C82 47.3551 79.9215 50.06 77.2068 50.509C76.6487 50.6012 76.0753 50.5927 75.5086 50.6065C75.2681 50.6128 75.1378 50.6509 75.0218 50.9517C73.916 53.825 72.425 56.4314 70.6013 58.8101C67.4949 62.86 63.7639 66.0076 59.4822 68.346C56.1923 70.1433 52.7379 71.4311 49.138 72.1905C46.7267 72.6999 44.2954 73.0621 41.828 72.9911C40.4749 72.9519 39.1133 73.0494 37.7698 72.9075C36.0564 72.7264 34.3506 72.4118 32.6552 72.0708C29.798 71.4968 27.0548 70.4737 24.4067 69.1657C21.1843 67.5739 18.1863 65.5638 15.465 63.0421C12.7894 60.5639 10.5321 57.6938 8.71691 54.3948C8.16637 53.395 7.67479 52.3518 7.19461 51.3076C7.03012 50.9496 6.86182 50.8172 6.48624 50.796C5.08755 50.7177 3.69172 50.598 2.50983 49.5897C1.01226 48.3125 0.0889904 46.6243 0.0481043 44.5485C-0.0365204 40.3091 0.0129233 36.0653 0.0290876 31.8237C0.0338418 30.6291 0.0290876 29.4207 0.185025 28.2451C0.434145 26.3663 1.46581 25.0626 2.932 24.1475C3.87238 23.5608 4.89643 23.3405 5.94806 23.2166C5.97944 23.2124 6.01557 23.2039 6.0422 23.2166C6.77624 23.565 6.99589 23.0249 7.25356 22.4181C8.39552 19.7248 9.8446 17.2423 11.5732 14.9727C14.3097 11.3793 17.5217 8.41811 21.1948 6.07119C23.5947 4.53765 26.1097 3.29958 28.7302 2.33265C31.1786 1.42925 33.6831 0.770507 36.2456 0.42313C37.6015 0.23885 38.9641 0.0376255 40.3266 0.00797131C44.0073 -0.0704004 47.6357 0.429484 51.1957 1.49174C55.0998 2.65567 58.7767 4.40102 62.1969 6.8136C64.1451 8.18829 65.9555 9.74831 67.6499 11.4905C70.1126 14.0227 72.156 16.914 73.7962 20.1601C74.2288 21.0158 74.6291 21.897 74.9723 22.8004C75.1549 23.2823 75.4164 23.3373 75.8091 23.3077C77.9694 23.1446 79.7018 24.0183 80.9674 25.9924C81.6577 27.0695 81.961 28.2642 81.9458 29.5965C81.9154 32.348 81.9363 35.0994 81.9363 37.8509C81.9563 37.8509 81.9762 37.8509 81.9971 37.8509L82 37.8478ZM54.0558 42.8561C57.2772 42.8847 59.911 39.9564 59.8949 36.3809C59.8787 32.6953 57.3419 29.911 54.0767 29.8909C50.8315 29.8708 48.3137 32.8309 48.25 36.2316C48.1805 39.9013 50.8999 42.8763 54.0558 42.8561ZM27.999 29.9597C24.7946 29.9725 22.2416 32.7748 22.2017 36.293C22.1589 40.0189 24.8118 42.7883 27.9514 42.8445C31.0702 42.9006 33.7829 39.8875 33.7668 36.4477C33.7497 32.8531 31.2024 29.9852 27.9999 29.9597H27.999Z"
+          fill="#171717"
+        />
+
+        {/* Eyelids that animate / blink */}
+        <g className="bot-eyelids-layer">
+          <ellipse
+            cx="27.99"
+            cy="36.4"
+            rx="6.4"
+            ry="7"
+            fill="#171717"
+            className="bot-eyelid bot-eyelid-left"
+          />
+          <ellipse
+            cx="54.05"
+            cy="36.4"
+            rx="6.4"
+            ry="7"
+            fill="#171717"
+            className="bot-eyelid bot-eyelid-right"
+          />
+        </g>
+      </svg>
+    </span>
+
+    {/* Four Connected Word Bubbles */}
+    <div className="bot-bubbles-cluster">
+      {/* 1. Left (Top-Left): Automation (Blue - S) */}
+      <div className="bot-bubble bubble-top-left">
+        <span className="bubble-pill pill-automation">Automation</span>
+        <svg
+          className="bubble-wire wire-top-left"
+          width="34"
+          height="28"
+          viewBox="0 0 34 28"
+          fill="none"
+        >
+          <path
+            d="M4 6 C14 6, 20 18, 30 24"
+            stroke="#93c5fd"
+            strokeWidth="1.8"
+            strokeDasharray="3 2"
+            strokeLinecap="round"
+          />
+          <circle cx="30" cy="24" r="3" fill="#1e40af" />
+          <circle cx="4" cy="6" r="2" fill="#3b82f6" />
+        </svg>
+      </div>
+
+      {/* 2. Right (Top-Right): Execute (Orange - C) */}
+      <div className="bot-bubble bubble-top-right">
+        <svg
+          className="bubble-wire wire-top-right"
+          width="34"
+          height="28"
+          viewBox="0 0 34 28"
+          fill="none"
+        >
+          <path
+            d="M30 6 C20 6, 14 18, 4 24"
+            stroke="#fed7aa"
+            strokeWidth="1.8"
+            strokeDasharray="3 2"
+            strokeLinecap="round"
+          />
+          <circle cx="4" cy="24" r="3" fill="#9a3412" />
+          <circle cx="30" cy="6" r="2" fill="#f97316" />
+        </svg>
+        <span className="bubble-pill pill-execute">Execute</span>
+      </div>
+
+      {/* 3. Right Bottom: Resolve (Green - N) */}
+      <div className="bot-bubble bubble-bottom-right">
+        <svg
+          className="bubble-wire wire-bottom-right"
+          width="34"
+          height="28"
+          viewBox="0 0 34 28"
+          fill="none"
+        >
+          <path
+            d="M4 4 C14 14, 20 22, 30 22"
+            stroke="#bbf7d0"
+            strokeWidth="1.8"
+            strokeDasharray="3 2"
+            strokeLinecap="round"
+          />
+          <circle cx="4" cy="4" r="3" fill="#166534" />
+          <circle cx="30" cy="22" r="2" fill="#22c55e" />
+        </svg>
+        <span className="bubble-pill pill-resolve">Resolve</span>
+      </div>
+
+      {/* 4. Left Bottom: Schedule (Purple - A) */}
+      <div className="bot-bubble bubble-bottom-left">
+        <span className="bubble-pill pill-schedule">Schedule</span>
+        <svg
+          className="bubble-wire wire-bottom-left"
+          width="34"
+          height="28"
+          viewBox="0 0 34 28"
+          fill="none"
+        >
+          <path
+            d="M30 4 C20 14, 14 22, 4 22"
+            stroke="#e9d5ff"
+            strokeWidth="1.8"
+            strokeDasharray="3 2"
+            strokeLinecap="round"
+          />
+          <circle cx="30" cy="4" r="3" fill="#6b21a8" />
+          <circle cx="4" cy="22" r="2" fill="#a855f7" />
+        </svg>
+      </div>
+    </div>
+  </span>
+)
+
+const Home = () => {
+  const [introPhase, setIntroPhase] = useState('intro-playing')
+
+  useEffect(() => {
+    // Complete one-time intro sequence after ~5.2 seconds
+    const timer = setTimeout(() => {
+      setIntroPhase('intro-done')
+    }, 5200)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  return (
+    <main className="hero-section">
+      <div className="hero-container">
+        {/* Top Announcement Badge */}
+        <div className="hero-badge">
+          <span className="badge-dot"></span>
+          <span className="badge-text">A smarter way to use Get Easy Software</span>
+        </div>
+
+        {/* Desktop / Tablet Headline */}
+        <h1 className="hero-title hero-title-desktop">
+          <span className="hero-title-line">Your software.</span>
+          <span className="hero-title-line">Your words.</span>
+          <span className="hero-title-line hero-title-line-bot">
+            Easy Bot
+            <BotMascot introPhase={introPhase} />
+            gets it done.
+          </span>
+        </h1>
+
+        {/* Mobile-Only Headline: "Meet Easy \n [BOT] Bot" */}
+        <h1 className="hero-title hero-title-mobile">
+          <span className="hero-title-line">Meet Easy</span>
+          <span className="hero-title-line hero-mobile-bot-line">
+            <BotMascot introPhase={introPhase} />
+            Bot
+          </span>
+        </h1>
+
+        {/* Hero Subtitle Description */}
+        <p className="hero-description">
+          Make everyday updates by simply asking. Easy Bot helps you manage
+          services, prices, schedules and more across your business software.
+        </p>
+
+        {/* CTA Buttons Group */}
+        <div className="hero-cta-group">
+          <button className="hero-btn-primary">
+            <span>Try the interactive demo</span>
+            <FiArrowRight className="hero-btn-icon" />
+          </button>
+          <button className="hero-btn-secondary">
+            <span>See how it works</span>
+          </button>
+        </div>
+
+        {/* Bottom Social Proof */}
+        <div className="hero-social-proof">
+          <div className="proof-avatars">
+            <span className="proof-avatar avatar-s">S</span>
+            <span className="proof-avatar avatar-c">C</span>
+            <span className="proof-avatar avatar-n">N</span>
+            <span className="proof-avatar avatar-a">A</span>
+          </div>
+          <span className="proof-text">
+            Built for service businesses using Get Easy Software
+          </span>
+        </div>
+      </div>
+    </main>
+  )
+}
+
+export default Home
