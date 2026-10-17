@@ -603,6 +603,63 @@
   gap: 0 0.45rem;
 }
 
+/* Staggered Smooth Entrance Animation for Desktop Title */
+.hero-title-desktop .hero-line-1 {
+  animation: heroTextFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title-desktop .hero-line-2 {
+  animation: heroTextFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title-desktop .hero-line-3 {
+  position: relative;
+  z-index: 10;
+}
+
+.hero-title-desktop .hero-line-text {
+  display: inline-block;
+  animation: heroTextFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both;
+  position: relative;
+  z-index: 1;
+}
+
+/* Staggered Smooth Entrance Animation for Mobile Title */
+.hero-title-mobile .hero-mobile-line-1 {
+  animation: heroTextFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title-mobile .hero-mobile-bot-line {
+  position: relative;
+  z-index: 10;
+}
+
+.hero-title-mobile .hero-mobile-line-text {
+  display: inline-block;
+  animation: heroTextFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes heroTextFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
 /* Bot Rolling-in from Left and Floater Idle Loop */
 .hero-bot-roller {
   display: inline-flex;
@@ -611,6 +668,7 @@
   position: relative;
   vertical-align: middle;
   margin: 0 0.35rem;
+  z-index: 40;
   animation: botRollIn 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
 }
 
@@ -853,7 +911,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 20;
+  z-index: 100;
 }
 
 .bot-bubble {
@@ -864,6 +922,7 @@
   opacity: 0;
   transform: scale(0);
   pointer-events: none;
+  z-index: 100;
 }
 
 /* Four Placements around the bot */
@@ -899,6 +958,8 @@
 
 /* Bubble Pills */
 .bubble-pill {
+  position: relative;
+  z-index: 101;
   font-family: var(--primary-font, 'Inter', sans-serif);
   font-size: 14.5px;
   font-weight: 600;

@@ -165,21 +165,21 @@ const Home = () => {
 
         {/* Desktop / Tablet Headline */}
         <h1 className="hero-title hero-title-desktop">
-          <span className="hero-title-line">Your software.</span>
-          <span className="hero-title-line">Your words.</span>
-          <span className="hero-title-line hero-title-line-bot">
-            Easy Bot
+          <span className="hero-title-line hero-line-1">Your software.</span>
+          <span className="hero-title-line hero-line-2">Your words.</span>
+          <span className="hero-title-line hero-title-line-bot hero-line-3">
+            <span className="hero-line-text hero-text-lead">Easy Bot</span>
             <BotMascot introPhase={introPhase} />
-            gets it done.
+            <span className="hero-line-text hero-text-tail">gets it done.</span>
           </span>
         </h1>
 
         {/* Mobile-Only Headline: "Meet Easy \n [BOT] Bot" */}
         <h1 className="hero-title hero-title-mobile">
-          <span className="hero-title-line">Meet Easy</span>
+          <span className="hero-title-line hero-mobile-line-1">Meet Easy</span>
           <span className="hero-title-line hero-mobile-bot-line">
             <BotMascot introPhase={introPhase} />
-            Bot
+            <span className="hero-mobile-line-text">Bot</span>
           </span>
         </h1>
 
